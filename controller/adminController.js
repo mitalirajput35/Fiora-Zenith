@@ -1,5 +1,9 @@
 const productModel = require("../models/productModel");
+const uploadImg = require("../middleware/multer/multer")
 
+const login = async(req, res)=>{
+    res.render("login")
+}
 const ManageProducts = async (req, res) => {
   res.render("./partials/manageProducts");
 };
@@ -30,10 +34,20 @@ const AboutSection = async (req, res) => {
 const ProdSection = async (req, res) => {
   res.render("./partials/showProdSection");
 };
-
+const getCreateProd = async(req, res) =>{
+    res.render("./partials/createProd");
+}
 const CreateProd = async (req, res) => {
+    console.log("body:::", req.body)
+    console.log("file:::", req.files)
   try {
-    const { name, description, topNote, heartNote, baseNote, price, image } = req.body;
+    const { name, description, topNote, heartNote, baseNote, price} = req.body;
+        if(!req.files || req.files.length === 0){
+            return res.status(400).json({message:"NO FILE UPLOADED"})
+        }
+    
+        const filePaths = req.files.map(file => `/public/product-images/${file.filename}`);
+        console.log("paths:::", filePaths)
     const newProduct = await productModel.create({
       name: name,
       description: {
@@ -45,18 +59,21 @@ const CreateProd = async (req, res) => {
         },
       },
       price,
-      image,
-    });
+      imageURL: filePaths,
+    });;
+    await newProduct.save()
     res.status(200).json({ success: true, data: newProduct });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
-};
+}
+
 const ReadProd = async (req, res) => {
   res.render("./partials/readProd");
 };
 
 module.exports = {
+  login,
   HeroSection,
   FemaleSection,
   MaleSection,
@@ -66,6 +83,7 @@ module.exports = {
   AboutSection,
   ProdSection,
   ManageProducts,
+  getCreateProd,
   CreateProd,
   ReadProd,
 };

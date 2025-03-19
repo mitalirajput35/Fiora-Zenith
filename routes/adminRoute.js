@@ -1,9 +1,12 @@
 const express = require("express")
 const router = express.Router();
-const { HeroSection, FemaleSection, MaleSection, BothSection, featuredSection, CorouselSection, AboutSection, ProdSection, ManageProducts, CreateProd, ReadProd} = require("../controller/adminController")
+const {login, HeroSection, FemaleSection, MaleSection, BothSection, featuredSection, CorouselSection, AboutSection, ProdSection, ManageProducts, getCreateProd,CreateProd, ReadProd} = require("../controller/adminController")
+const uploadImg = require("../middleware/multer/multer")
 
+router.route("/login").get(login);
 router.route("/manageProducts").get(ManageProducts);
-router.route("/manageProducts/createProd").get(CreateProd).post(CreateProd);
+router.route("/manageProducts/getcreateProd").get(getCreateProd);
+router.route("/manageProducts/createProd").post(uploadImg.array("images", 5), CreateProd);
 router.route("/manageProducts/readProd").get(ReadProd);
 
 router.route("/heroSection").get(HeroSection);

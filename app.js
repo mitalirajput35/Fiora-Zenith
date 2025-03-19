@@ -6,7 +6,7 @@ const port = process.env.PORT;
 const path = require("path")
 const expressLayout = require("express-ejs-layouts")
 const adminRoute = require("./routes/adminRoute")
-const router = express.Router();
+
  
 
 app.use(expressLayout)
@@ -22,5 +22,5 @@ app.get("/", (req, res) =>{
 })
 
 app.listen(3000,()=>{
-    console.log(process.env.PORT, process.env.DB, process.env.MONGODB_URI)
+    // console.log(process.env.PORT, process.env.DB, process.env.MONGODB_URI)
 })

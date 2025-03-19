@@ -1,4 +1,4 @@
-<form action="/manageProducts/createProd" method="POST">
+<form action="/admin/manageProducts/createProd" method="POST" enctype="multipart/form-data">
     <div class="hero-section">
         <h1>CREATE PRODUCT</h1>
         <div class="main">
@@ -7,14 +7,16 @@
             <label for="name">Name</label>
                 <input class="input" type="text" id="name" name="name" placeholder="Enter Name of Product">
             <label for="description">Description</label>
-                <input class="input" type="text" id="description" name="description" placeholder="Overall Description">
+                <textarea class="description" type="text" id="description" name="description" placeholder="Overall Description"></textarea>
             <label for="">Notes</label>
                 <input class="input" type="text" id="topNote" name="topNote" placeholder=" Top Note">
                 <input class="input" type="text" id="baseNote" name="baseNote" placeholder=" Base Note">
-                <input class="input" type="text" id="HeartNote" name="HeartNote" placeholder=" Heart Note">
+                <input class="input" type="text" id="heartNote" name="heartNote" placeholder=" Heart Note">
                 <label for="">Price</label>
                 <input class="input" type="text" id=" " name="price" placeholder=" Enter Price">
-                <label for="">Image</label>        
+                <input type="file" name="images" multiple> 
+                
+                <input class="submit-btn" type="submit" value="Create Product">
         </div>
         </div>
     </div>
