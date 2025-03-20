@@ -1,12 +1,58 @@
 const productModel = require("../models/productModel");
+const adminModel = require("../models/adminModel")
 const uploadImg = require("../middleware/multer/multer")
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 
-const login = async(req, res)=>{
-    res.render("login")
+const createAdmin = async (req,res) =>{
+  try {
+    let{ email, password } = req.body
+    const isAdmin = await adminModel.findOne({adminEmail : email})
+
+    if(isAdmin){
+    return res.status(400).json({message : "Admin already exists" })
+    }
+
+    await bcrypt.hash(password, 10, async(err, hash)=>{
+      const admin = await adminModel.create({
+         adminEmail: email,
+         adminPassword: hash
+        })
+        res.status(200).json({message: "admin succesfully created"})
+    } )
+  
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
 }
+
+// GET LOGIN PAGE
+const getlogin = async(req, res)=>{
+    res.render("login",{ layout: false })
+}
+
+const login = async (req, res)=>{
+  let{ email, password} = req.body
+  const admin = await adminModel.findOne({ adminEmail: email})
+  if(!admin){
+    res.status(404).json({message: "Something went wrong(admin not found)"})
+  }
+  const isMatch = await bcrypt.compare(password, admin.adminPassword)
+  if(!isMatch){
+    res.status(400).json({message: "Something went Wrong ,Invalid password" })
+  }
+  let token = jwt.sign({email: email}, process.env.TOKEN_SECRETKEY)
+  res.cookie("token", token) 
+  return res.status(200).redirect("/")
+}
+
 const ManageProducts = async (req, res) => {
   res.render("./partials/manageProducts");
 };
+
+const index = async(req, res)=>{
+  res.render("index")
+}
 
 const HeroSection = async (req, res) => {
   res.render("./partials/heroSection");
@@ -73,7 +119,10 @@ const ReadProd = async (req, res) => {
 };
 
 module.exports = {
+  createAdmin,
+  getlogin,
   login,
+  index,
   HeroSection,
   FemaleSection,
   MaleSection,

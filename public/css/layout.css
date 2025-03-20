@@ -159,7 +159,22 @@ Show dropdown on click
     line-height: 1.5; /* Adjusts line spacing */
     font-size: 1.3rem;
 }
+/* HOME PAGE---------------------------------------------------------------- */
+.home{
+    height: 100vh;
+    width: 78vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 4rem;
+    font-family: cursive;
+    text-align: center;
+    overflow: hidden;
+   
+    /* text-justify: center; */
 
+}
 
 /* HERO SECTION ---------------------------------------> */
 .hero-section{
