@@ -1,1 +1,55 @@
-<h1>read prod</h1>
+<div class="hero-section">
+    <h1>PRODUCT LIST</h1>
+    <div class="main">
+        <table>
+            <colgroup>
+                <col style="width: 5%;"> 
+                <col style="width: 5%;"> 
+                <col style="width: 10%;">
+                <col style="width: 6%;">
+                <col style="width: 7%;">
+                <col style="width: 30%;">
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+                <col style="width: 5%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Sr.no.</th>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Top Notes</th>
+                    <th>Heart Note</th>
+                    <th>Base Note</th>
+                    <th></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach((product, index)=>{ %>
+                    <tr>
+                        <td class="tSerial-no."><%= index + 1 %></td>
+                        <td class="tname"><%= product.product_id %></td>
+                        <td class="tname"><%= product.name %></td>
+                        <td class="tprice"><%= product.price %></td>
+                        <td class="tcategory"><%= product.category %></td>
+                        <td class="tdescription"><%= product.description.overall %></td>
+                        <td class="tnote"><%= product.description.note.topNote.join(", ") %></td>
+                        <td class="tnote"><%= product.description.note.heartNote.join(", ") %></td>
+                        <td class="tnote"><%= product.description.note.baseNote.join(", ") %></td>
+                        <td >
+                            <a href="/admin/editProducts/<%= product.product_id %>">
+                                <button class="t-btn"> Edit </button>
+                            </a>
+                        </td>
+                    </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </div>
+       
+</div>

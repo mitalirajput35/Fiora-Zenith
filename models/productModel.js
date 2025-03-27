@@ -5,6 +5,10 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [true, "Product name is required"],
     },
+    product_id:{
+        type:String,
+        required:[true,"Product id is required"],
+    },
     description: {
         overall: {
             type: String,
@@ -16,14 +20,39 @@ const productSchema = mongoose.Schema({
             baseNote: [{ type: String, required: true }],
         },
     },
+    category:{
+        type: String,
+        required: [true, "Product category is required"],
+    },
     price: {
         type: Number,
         required: [true, "Product Price is required"],
     },
-    imageURL: [{
+    image: [{
             type: String,
             required: [true, "Product Image is required"]
+    
     }],
+    isFeatured: { 
+        type: Boolean, 
+        default: false 
+    },
+    isCorouseled:{
+        type: Boolean, 
+        default: false 
+    },
+    isAddedToFemale:{
+        type: Boolean, 
+        default: false 
+    },
+    isAddedToMale:{
+        type: Boolean, 
+        default: false 
+    },
+    isAddedToBoth:{
+        type: Boolean, 
+        default: false 
+    }
 });
 
 module.exports = mongoose.model("Product", productSchema);

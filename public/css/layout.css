@@ -1,204 +1,358 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html,body{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    /* background-color: burlywood; */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  /* background-color: burlywood; */
 }
 
-    /* MAIN LAYOUT CSS ------------------------------>*/
-.layout-container{
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-
+/* MAIN LAYOUT CSS ------------------------------>*/
+.layout-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
 }
 
-.side-section{
-    min-height: 100vh;
-    /* height: 100%; */
-    width: 20%;
-   
-    backdrop-filter: blur(10px);
+.side-section {
+  position: fixed;
+  min-height: 100vh;
+  /* height: 100%; */
+  width: 20%;
+  background-color: #e3e6e8;
+  backdrop-filter: blur(10px);
 }
 
-
-.ejs-section{
-    color: #ECEFF4;
-    min-height: 100vh;
-    width: 80vw;
-    border-left: 3px solid black;
-    background-color: #2E3440 ;
-    /* background-color: rgb(68, 67, 67); */
-    /* background-image: URL("../images/ejs-bg.webp") ; */
-    /* background-size: cover; */
-    /* background: linear-gradient(110deg, #549eedc9, #000); */
+.ejs-section {
+  margin-left: 20%;
+  color: #eceff4;
+  min-height: 100vh;
+  width: 80vw;
+  border-left: 3px solid black;
+  background-color: #2e3440;
+  /* background-color: rgb(68, 67, 67); */
+  /* background-image: URL("../images/ejs-bg.webp") ; */
+  /* background-size: cover; */
+  /* background: linear-gradient(110deg, #549eedc9, #000); */
 }
 
 /* SIDEBAR SECTION--------------------------------> */
-.sidebar{
-    font-size: 2rem;
-    color:#333333;
-    padding: 2rem;
-    height:100%;
-    width: 100%;    
-    background-color: #E3E6E8 ;
-    /* background-image: URL("../images/sidebard-bg.webp") ; */
-    /* background-size: cover; */
-}
-.nav-btn{
-    margin: 2rem 0rem 0rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-.nav-btn a{
-    text-decoration: none;
-}
 
-/* -------------------------------------------------------------- */
-/* deop section */
-/* ----------------------------------------------------- */
-/* .dropdown {
-    position: relative;
-    display: inline-block;
+.sidebar {
+  
+  font-size: 2rem;
+  color: #333333;
+  padding: 2rem;
+  height: 100%;
+  width: 100%;
+  background-color: #e3e6e8;
+  /* background-image: URL("../images/sidebard-bg.webp") ; */
+  /* background-size: cover; */
 }
-
-.dropdownSection {
-    display: none;
-    position: absolute;
-    background-color: #222;
-    min-width: 200px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+.dropdown a{
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
-
-
-Show dropdown on click
-.show {
-    display: block;
-} */
+.ddIcon{
+  /* position: fixed; */
+  /* background: white; */
+  height: 1.5rem;
+}
+.nav-btn {
+  margin: 2rem 0rem 0rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.nav-btn a {
+  text-decoration: none;
+}
 
 .sidebar .dropdownSection {
-    display: none;
-    list-style: none;
-    padding-left: 15px;
+  display: none;
+  list-style: none;
+  padding-left: 15px;
 }
 
 .sidebar .dropdownSecion li {
-    padding: 5px 0;
+  padding: 5px 0;
 }
 
 .dropdownSection a:hover {
-    color: #FFD700;
-    color: rgb(228, 10, 10);
+  color: #ffd700;
+  color: rgb(228, 10, 10);
 }
 
 .dropdownSection a {
-    font-size: 1.5rem;
-    display: block;
-    padding: 10px;
-    text-decoration: none;
+  font-size: 1.5rem;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
 }
-
 
 /* ----------------------------------------------------------------------- */
 /* General css */
-.heading{
-    font-size: 2.5rem;
+.heading {
+  font-size: 2.5rem;
 }
-.main{
-    
-    padding: 2rem 0rem 2rem 3rem;
-    border-radius: 2rem;
-    background: #3B4252;
-    backdrop-filter: blur(50px);
-    box-shadow: black;
-}
-
-.input-section{
-    margin-top: 1rem;
-    border-radius: 2px solid black;
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-direction:column;
-    flex-wrap:wrap;
-    gap: 1rem;
+.main {
+  padding: 2rem 0rem 2rem 3rem;
+  border-radius: 2rem;
+  background: #3b4252;
+  backdrop-filter: blur(50px);
+  box-shadow: black;
 }
 
-.input-section label{
-    font-size: 1.8rem;
+.input-section {
+  margin-top: 1rem;
+  border-radius: 2px solid black;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-flex-group: #e2e7e8;
 }
 
-.submit-btn{
-    background-color: #6FAFE6;
-    padding:1rem 1.2rem;
-    font-size: 1.4rem;
-    border-radius: 2rem;
-    height: 5rem;
-    width:13rem;
+.input-section label {
+  font-size: 1.8rem;
+}
+
+.submit-btn {
+  background-color: #6fafe6;
+  padding: 1rem 1.2rem;
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  height: 5rem;
+  width: 13rem;
 }
 
 .description {
-    margin-top: 2rem;
-    border-radius: 1.2rem;
-    max-width: 50rem;
-    height: 13rem; /* Prevents it from growing too large */
-    resize:none;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden; /* Hides the scrollbar */
-    line-height: 1.5; /* Adjusts line spacing */
-    font-size: 1.3rem;
+  margin-top: 2rem;
+  border-radius: 1.2rem;
+  max-width: 50rem;
+  height: 13rem; /* Prevents it from growing too large */
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden; /* Hides the scrollbar */
+  line-height: 1.5; /* Adjusts line spacing */
+  font-size: 1.3rem;
+  background-color: #e2e7e8;
 }
-/* HOME PAGE---------------------------------------------------------------- */
-.home{
-    height: 100vh;
-    width: 78vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 4rem;
-    font-family: cursive;
-    text-align: center;
-    overflow: hidden;
-   
-    /* text-justify: center; */
+.table-area{
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
 
+.table-columns .col-1 {
+  width: 5%;
+}
+
+.table-columns .col-2 {
+  width: 5%;
+}
+
+.table-columns .col-3 {
+  width: 10%;
+}
+
+.table-columns .col-4 {
+  width: 7%;
+}
+
+.table-columns .col-5 {
+  width: 5%;
+}
+
+/* HOME PAGE---------------------------------------------------------------- */
+.index {
+  height: 100vh;
+  width: 78vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 4rem;
+  font-family: cursive;
+  text-align: center;
+  overflow: hidden;
+
+  /* text-justify: center; */
 }
 
 /* HERO SECTION ---------------------------------------> */
-.hero-section{
-    height: 100%;
+.hero-section {
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* background-color: brown; */
+  /* justify-content: space-between; */
+}
+
+.input {
+  /* width:auto; */
+  min-width: 22rem;
+  max-width: 50rem;
+  min-height: 4rem;
+  padding: 1rem;
+  border-radius: 1.2rem;
+  font-size: 1.3rem;
+  background-color: #e2e7e8;
+}
+
+/* readall section------------------------------------------------------------------ */
+
+/* Table container */
+.main {
+  padding: 20px;
+}
+
+/* Style the table */
+table {
+  font-size: 1.3rem;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2b2f3a; /* Dark Gray Background */
+  color: #ffffff; /* White text */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
+td,
+th {
+  text-overflow: ellipsis;
+  color: #ffffff; /* White text */
+}
+/* Table header */
+thead {
+  background-color: #1e2129; /* Darker shade */
+}
+/* tr{
     width: 100%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    /* background-color: brown; */
-    /* justify-content: space-between; */
+} */
+th {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #444857;
 }
 
-
-
-.input{
-    /* width:auto; */
-    min-width: 22rem;
-    max-width: 50rem;
-    min-height: 4rem;
-    padding: 1rem;
-    border-radius: 1.2rem;
-    font-size: 1.3rem;
+/* Table rows */
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 10px;
+  border-bottom: 1px solid #444857; /* Light border */
 }
 
+.t-btn {
+  font-size: 1rem;
+  background-color: #5ca5f3;
+  padding: 1rem;
+  border-radius: 1.1rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
 
-/* herSection------------------------------------------------------------------ */
+tbody tr:nth-child(even) {
+  background-color: #343a46; /* Slightly lighter gray */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #2b2f3a;
+}
+
+tbody tr:hover {
+  background-color: #3a3f4b;
+  transition: background 0.3s ease-in-out;
+}
+tbody tr:hover .t-btn {
+  opacity: 1;
+}
+
+td:nth-child(1),
+td:nth-child(3),
+td:nth-child(4) {
+  text-align: left;
+}
+
+/* Edit page---------------------------------------------------- */
+.preview {
+ 
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0rem 2rem 3rem;
+  border-radius: 2rem;
+  background: #3b4252;
+  backdrop-filter: blur(50px);
+  box-shadow: black;
+  gap: 5px;
+}
+.preview .title {
+  display: inline;
+}
+.preview .content {
+  font-size: 1.5rem;
+  display: inline;
+  margin-left: 1rem;
+  color: #e2e7e8;
+}
+.images{
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.images .image-container img {
+  max-width: 30rem; 
+  max-height: 30rem; 
+  width: auto; 
+  height: auto; 
+  object-fit: contain; 
+  border-radius: 8px; 
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-container{
+  position: relative;
+  display: inline-block;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  /* background: red; */
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 14px;
+  opacity: 0; /* Hide by default */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .delete-btn {
+  opacity: 1; 
+}
+/* -------------------------------------------------- */
+/* FEATURED SECTION CSS */
+/* ------------------------------------------------------------------ */

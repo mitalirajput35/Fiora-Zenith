@@ -10,6 +10,7 @@ const adminAuth = async (req, res, next) => {
             return res.redirect("/getlogin")
         }
     }
+    next()
 }
 
 module.exports = adminAuth;

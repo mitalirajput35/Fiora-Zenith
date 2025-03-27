@@ -1,4 +1,84 @@
-<div class="main">
-    <h1>Featured section</h1>
+<div class="hero-section ">
     
+  <h1>FEATURED SECTION</h1>
+  <div class="table-area">
+  <div class="main ">
+    <table>
+        <colgroup class="table-columns">
+            <col class="col-1" />
+            <col class="col-2" />
+            <col class="col-3" />
+            <col class="col-4" />
+            <col class="col-5" />
+          </colgroup>
+
+      <h1>Featured Products</h1>
+      <thead>
+        <tr>
+          <th>Sr.no.</th>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% featuredProducts.forEach((product, index)=>{ %>
+            <tr>
+                <td class="tSerial-no."><%= index + 1 %></td>
+                <td class="tname"><%= product.product_id %></td>
+                <td class="tname"><%= product.name %></td>
+                <td class="tcategory"><%= product.category %></td>
+      
+                <td>
+                    <form action="/admin/removeFromFeatured" method="POST">
+                        <input type="hidden" name="product_id" value="<%= product.product_id %>">
+                        <button type="submit" class="t-btn">Remove</button>
+                    </form>
+                </td>
+              </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="main">
+    <h1>All Products</h1>
+    <table>
+        <colgroup class="table-columns">
+            <col class="col-1" />
+            <col class="col-2" />
+            <col class="col-3" />
+            <col class="col-4" />
+            <col class="col-5" />
+          </colgroup>
+      <thead>
+        <tr>
+          <th>Sr.no.</th>
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% allProducts.forEach((product, index)=>{ %>
+        <tr>
+          <td class="tSerial-no."><%= index + 1 %></td>
+          <td class="tname"><%= product.product_id %></td>
+          <td class="tname"><%= product.name %></td>
+          <td class="tcategory"><%= product.category %></td>
+
+          <td>
+            <form action="/admin/addToFeatured" method="POST">
+                <input type="hidden" name="product_id" value="<%= product.product_id %>" >
+                <button type="submit" class="t-btn">ADD</button>
+            </form>
+          </td>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </div>
+</div>
 </div>

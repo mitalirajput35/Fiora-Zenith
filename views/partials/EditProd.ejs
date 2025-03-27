@@ -1,0 +1,58 @@
+
+    <div class="hero-section">
+        <h1>UPDATE PRODUCT</h1>
+       
+        <div class="preview">
+            
+            <div><h2 class="title">Product Id:</h2> <span class="content"><%= product.product_id %></span> </div>
+            <div><h2 class="title">Name:</h2> <span class="content"><%= product.name %></span> </div>
+            <div><h2 class="title">Category:</h2> <span class="content"><%= product.category %></span> </div>
+            <div><h2 class="title">Description:</h2> <span class="content"><%= product.description.overall %></span> </div>
+            <div><h2 class="title">Top Note:</h2> <span class="content"><%= product.description.note.topNote.join(",") %></span> </div>
+            <div><h2 class="title">Heart Note:</h2> <span class="content"><%= product.description.note.heartNote.join(",") %></span> </div>
+            <div><h2 class="title">Base Note:</h2> <span class="content"><%= product.description.note.baseNote.join(",") %></span> </div>
+            <div><h2 class="title">Price:</h2> <span class="content"><%= product.price %></span> </div>
+        
+            <div class="images">
+                <% product.image.forEach((filename)=>{%>
+                    <div class="image-container">
+                 <img src='/product-images/<%= filename %>' alt="image here"> 
+
+                 <form action="/admin/deleteImage/<%= filename %>" method="POST" style="display:inline;" class="delete-form">
+                    <input type="hidden" name="product_id" value="<%= product.product_id %>">
+                    <button type="submit" class="delete-btn">❌</button>
+                  </form>
+                </div>
+
+                 
+                 <%})%>
+            </div>
+        </div>
+
+<form action="/admin/updateProd/<%= product.product_id %>" method="POST" enctype="multipart/form-data">
+
+    <div class="main">
+        <div class="input-section">
+            <label for="name">Name</label>
+                <input class="input" type="text" id="name" name="name" placeholder="<%= product.name %>">
+
+            <label for="description">Description</label>
+                <textarea class="description" type="text" id="description" name="description" placeholder="<%= product.description.overall %>"></textarea>
+
+            <label for="category">Category</label>
+                <input class="input" type="text" id="category" name="category" placeholder="<%= product.category %>">
+                
+            <label for="">Notes</label>
+                <input class="input" type="text" id="topNote" name="topNote" placeholder=" TopNote: <%= product.description.note.topNote.join(",") %>">
+                <input class="input" type="text" id="heartNote" name="heartNote" placeholder=" Heart Note: <%= product.description.note.heartNote.join(",") %>">
+                <input class="input" type="text" id="baseNote" name="baseNote" placeholder=" Base Note: <%= product.description.note.baseNote.join(",") %>">
+            <label for="price">Price</label>
+                <input class="input" type="number" id="price" name="price" placeholder="<%= product.price %>">
+            <label for="image">Add image</label>
+                <input type="file" id="image" name="images" multiple> 
+            
+                <input class="submit-btn" type="submit" value="Update Product">
+                </div>
+        </div>
+    </div>
+</form>
